@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  # post request - localhost:3000/posts
+
   require 'sidekiq/web'
 
   scope :monitoring do
@@ -24,6 +26,13 @@ Rails.application.routes.draw do
         delete :logout
         get :me
         post :create
+      end
+      # post request - localhost:3000/api/v1/posts
+      resources :posts, only: [:create, :destroy, :update]
+      
+      # localhost:3000/api/v1/posts/my_posts
+      namespace :posts do
+        get :my_posts
       end
     end
   end
