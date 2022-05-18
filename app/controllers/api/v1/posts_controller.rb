@@ -43,7 +43,7 @@ module Api
 
             # my posts - current user posts
             def my_posts
-              render_error(payload: PostBlueprint.render_as_hash)
+              render_success(payload: PostBlueprint.render_as_hash(@current_user.posts))
             end
 
             private
