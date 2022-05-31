@@ -38,7 +38,7 @@ module Api
             def destroy
               post = Post.find(params[:id])
               return render_error(error: "Error in deleting post") unless post.destroy
-              return render_success(payload: "Post successfully deleted")
+              return render_success(payload: "Post successfully deleted") if post.destroy
             end
 
             # my posts - current user posts
